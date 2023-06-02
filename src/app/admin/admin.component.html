@@ -1,1 +1,81 @@
+<div>
+  <div class="row">
+    <div class="col-8 m-auto">
 
+      <form [formGroup]="formGroupDAnuncios">
+        <div class="mb-3">
+          <div class="display-6 text-center">
+            Cadastro de Anuncios
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="título" class="form-label">Título</label>
+          <input type="text" formControlName="título" class="form-control" id="título" placeholder="título">
+          <div *ngIf="submitted && name.invalid">
+            <small class="text-danger">Nome inváido!</small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="descrição" class="form-label">descrição</label>
+          <input type="text" formControlName="descrição" class="form-control" id="descrição" placeholder="descrição">
+        </div>
+        <div class="mb-3">
+          <label for="data_de_validade" class="form-label">data_de_validade</label>
+          <input type="text" formControlName="data_de_validade" class="form-control" id="data_de_validade" placeholder="data_de_validade">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
+          <div *ngIf="submitted && email.invalid">
+            <small class="text-danger">Email inváido!</small>
+          </div>
+          <div class="mb-3">
+            <label for="imagem" class="form-label">imagem</label>
+            <input type="imagem" formControlName="imagem" class="form-control" id="imagem" placeholder="imagem">
+            <div *ngIf="submitted && email.invalid">
+              <small class="text-danger">Email inváido!</small>
+            </div>
+        </div>
+        <div class="mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary" (click)="save()">Salvar</button>
+          <button class="btn btn-danger" (click)="clear()">Limpar</button>
+        </div>
+      </div>
+    </form>
+
+
+      <table class="table table-striped col-8 m-auto">
+
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">título</th>
+            <th scope="col">descrição</th>
+            <th scope="col">data_de_validade</th>
+            <th scope="col">Email</th>
+            <th scope="col">imagem</th>
+            <th scope="col">Opcões</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let DAnuncios of danuncios">
+            <th scope="row">{{DAnuncios.id}}</th>
+            <td>{{DAnuncios.titulo}} </td>
+            <td>{{DAnuncios.descricao}} </td>
+            <td>{{DAnuncios.data_de_validade}} </td>
+            <td>{{DAnuncios.email}}</td>
+            <td>{{DAnuncios.imagem}}</td>
+            <td class="d-flex justify-content-end">
+              <button class="btn btn-primary me-1" (click)="edit(DAnuncios)">Editar</button>
+              <button class="btn btn-danger " (click)="delete(DAnuncios)">Excluir</button>
+            </td>
+
+          </tr>
+          <tr>
+
+
+        </tbody>
+      </table>
+    </div>
+</div>
